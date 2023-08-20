@@ -15,14 +15,3 @@ const Header = () => {
 };
 
 export default Header;
-
-/* <Link to="/contact">
-  <span className=" text-xl text-white hover:text-zinc-400  px-4">
-    Contact
-  </span>
-</Link>
-<Link to="/charts-maps">
-  <span className="text-xl text-white hover:text-zinc-400 px-4">
-    Charts and Maps
-  </span>
-</Link> */

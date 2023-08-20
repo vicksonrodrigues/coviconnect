@@ -1,115 +1,172 @@
-import React from "react";
+import React, { useState } from "react";
+import { ContactModel, addContact } from "./contactSlice";
+import { customAlphabet } from "nanoid";
+import { useAppDispatch } from "../../app/hooks";
 
-const ContactForm = () => {
+interface FormProps {
+  open: boolean;
+  handleClose: () => void;
+}
+
+const ContactForm = ({ open, handleClose }: FormProps) => {
+  const alphabet =
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  const nanoid = customAlphabet(alphabet, 7);
+
+  const dispatch = useAppDispatch();
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+
+  const handleFirstName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFirstName(event.target.value);
+  };
+
+  const handleLastName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLastName(event.target.value);
+  };
+
+  const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePhone = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
+  };
+
+  const handleReset = () => {
+    setFirstName("");
+    setLastName("");
+    setPhone("");
+    setEmail("");
+  };
+  const handleSubmit = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    const newContact: ContactModel = {
+      id: nanoid(),
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+      email: email,
+    };
+    dispatch(addContact(newContact));
+    handleReset();
+    handleClose();
+
+    console.log(newContact);
+  };
   return (
-    <div className="grid grid-rows-1 gap-3 ">
-      <div className="block p-2 h-16  text-center text-2xl text-black font-bold  align-middle  bg-lime-200 shadow-lg rounded-xl">
-        Contact Form
-      </div>
-      <div>
-        <form className=" px-8 pt-6 pb-8 mb-4 ">
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="mb-4">
-              <label
-                className=" block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="firstName"
+    <>
+      {open ? (
+        <div className="fixed top-0 left-0 right-0 z-50 p-5 overflow-x-hidden overflow-y-hidden md:inset-0  h-full backdrop-blur-sm bg-black/30">
+          <div className="grid grid-rows-1 gap-3 relative w-full max-w-2xl max-h-full mx-auto">
+            <div className="relative bg-white rounded-lg shadow">
+              <button
+                onClick={handleClose}
+                type="button"
+                className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
               >
-                First Name
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
-              />
+                <svg
+                  className="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span className="sr-only">Close modal</span>
+              </button>
+              <div className="flex items-center justify-center p-4 border-b rounded-t">
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  Contact Form
+                </h3>
+              </div>
+              <div>
+                <form className=" px-8 pt-6 pb-8 mb-4 " onSubmit={handleSubmit}>
+                  <div className="grid md:grid-cols-2 md:gap-6">
+                    <div className="mb-4">
+                      <label
+                        className=" block text-gray-700 text-sm font-bold mb-2 text-left "
+                        htmlFor="firstName"
+                      >
+                        First Name
+                      </label>
+                      <input
+                        value={firstName}
+                        onChange={handleFirstName}
+                        type="text"
+                        id="firstName"
+                        className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        className=" block text-gray-700 text-sm font-bold mb-2 text-left"
+                        htmlFor="lastName"
+                      >
+                        Last Name
+                      </label>
+                      <input
+                        value={lastName}
+                        onChange={handleLastName}
+                        type="text"
+                        id="lastName"
+                        className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
+                      />
+                    </div>
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      className=" block text-gray-700 text-sm font-bold mb-2 text-left"
+                      htmlFor="lastName"
+                    >
+                      Phone No.
+                    </label>
+                    <input
+                      value={phone}
+                      onChange={handlePhone}
+                      type="tel"
+                      id="lastName"
+                      className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      className=" block text-gray-700 text-sm font-bold mb-2 text-left"
+                      htmlFor="lastName"
+                    >
+                      Email
+                    </label>
+                    <input
+                      value={email}
+                      onChange={handleEmail}
+                      type="email"
+                      id="lastName"
+                      className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center "
+                  >
+                    Add to Contact
+                  </button>
+                </form>
+              </div>
             </div>
-            <div className="mb-4">
-              <label
-                className=" block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="lastName"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
-              />
-            </div>
           </div>
-          <div className="mb-4">
-            <label
-              className=" block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="lastName"
-            >
-              Phone No.
-            </label>
-            <input
-              type="tel"
-              id="lastName"
-              className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className=" block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="lastName"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="lastName"
-              className="border shadow-sm appearance-none rounded w-full p-3 text-gray-700"
-            />
-          </div>
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center "
-          >
-            Add to Contact
-          </button>
-        </form>
-      </div>
-    </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 
 export default ContactForm;
-
-/*
-<form>
-  <div class="relative z-0 w-full mb-6 group">
-      <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
-  </div>
-  <div class="relative z-0 w-full mb-6 group">
-      <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-  </div>
-  <div class="relative z-0 w-full mb-6 group">
-      <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
-  </div>
-  <div class="grid md:grid-cols-2 md:gap-6">
-    <div class="relative z-0 w-full mb-6 group">
-        <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
-    </div>
-    <div class="relative z-0 w-full mb-6 group">
-        <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
-    </div>
-  </div>
-  <div class="grid md:grid-cols-2 md:gap-6">
-    <div class="relative z-0 w-full mb-6 group">
-        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
-    </div>
-    <div class="relative z-0 w-full mb-6 group">
-        <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
-    </div>
-  </div>
-  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-</form>
- */

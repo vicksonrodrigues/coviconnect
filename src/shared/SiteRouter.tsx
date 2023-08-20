@@ -8,6 +8,7 @@ import Layout from "./Layout";
 import NoMatch from "./NoMatch";
 import Contact from "../features/contacts/Contact";
 import ChartsMaps from "../features/charts-maps/ChartsMaps";
+import ContactDetails from "../features/contacts/ContactDetails";
 
 const SiteRouter = () => {
   const BrowserRoutes = createBrowserRouter([
@@ -23,6 +24,12 @@ const SiteRouter = () => {
         {
           path: "/contact",
           element: <Contact />,
+          children: [
+            {
+              path: "/contact/:contactId",
+              element: <ContactDetails />,
+            },
+          ],
         },
         {
           path: "/charts-maps",
