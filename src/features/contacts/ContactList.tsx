@@ -51,14 +51,12 @@ const NoContact = () => {
 
 const ContactList = () => {
   const contactList = useAppSelector((state) => state.contact);
-  console.log("Contact List", contactList.length);
+
   const navigate = useNavigate();
 
   const [open, setOpen] = useState<boolean>(false);
   const [currentList, setCurrentList] = useState<ContactModel[]>();
   const [search, setSearch] = useState<string>("");
-
-  console.log("Search String", search);
 
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -92,10 +90,10 @@ const ContactList = () => {
         contact.firstName.toLowerCase().includes(search.toLowerCase()) ||
         contact.lastName.toLowerCase().includes(search.toLowerCase())
     );
-    console.log("Search List", searchList);
+
     setCurrentList(searchList);
   };
-  console.log("current list", currentList);
+
   return (
     <div className="flex flex-col w-full  border-4 border-t-4 rounded-t-2xl ">
       <div className=" flex px-5 h-16  items-center justify-between bg-lime-200 shadow-md rounded-t-xl">

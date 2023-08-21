@@ -3,7 +3,10 @@ import NavBar from "../navBar/NavBar";
 
 const Header = () => {
   return (
-    <header className="  block md:flex  bg-gradient-to-r from-emerald-500 to-emerald-900 p-4 sticky top-0 border-b border-gray-200 ">
+    <header
+      className="  block md:flex  bg-gradient-to-r from-emerald-500 to-emerald-900 p-4 border-b border-gray-200 sticky top-0 "
+      style={{ zIndex: 1100 }}
+    >
       <div className=" text-4xl font-bold tracking-tight text-white text-center md:text-left  ">
         CoviConnect
       </div>

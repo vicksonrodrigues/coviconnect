@@ -1,15 +1,19 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-
-import { getWorldCovidCases } from "./request";
+import CovidLineGraph from "./CovidLineGraph";
+import CovidOverView from "./CovidOverView";
+import CovidMap from "./CovidMap";
 
 const ChartsMaps = () => {
-  const result = useQuery({
-    queryKey: ["worldWideCase"],
-    queryFn: getWorldCovidCases,
-  });
-  console.log("Result", result.data);
-  return <div>ChartsMaps</div>;
+  return (
+    <div className=" w-full mb-16">
+      <div className="bg-lime-200 shadow-md px-5 h-16 flex items-center justify-center">
+        <div className="text-2xl  text-black font-bold ">Covid Trackers</div>
+      </div>
+      <CovidOverView />
+      <CovidLineGraph />
+      <CovidMap />
+    </div>
+  );
 };
 
 export default ChartsMaps;

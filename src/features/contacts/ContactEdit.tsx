@@ -51,8 +51,11 @@ const ContactEdit = ({ id, handleEdit }: EditProps) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 p-5 overflow-x-hidden overflow-y-hidden md:inset-0  h-full backdrop-blur-sm bg-black/30">
-      <div className="grid grid-rows-1 gap-3 relative w-full max-w-2xl max-h-full mx-auto">
+    <div
+      className="fixed top-0 left-0 right-0 z-50 p-5 overflow-x-hidden overflow-y-hidden md:inset-0  h-full backdrop-blur-sm bg-black/30"
+      style={{ zIndex: 1100 }}
+    >
+      <div className="grid grid-rows-1 gap-3 relative w-full max-w-2xl max-h-full mx-auto mt-16">
         <div className="relative bg-white rounded-lg shadow">
           <button
             onClick={handleEdit}
