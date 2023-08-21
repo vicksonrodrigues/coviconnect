@@ -1,46 +1,166 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<div align="center">
+  <h1 align="center">CoviConnect</h1>
+  <p align="center">
+    A contact management app with Charts and Maps
+    <br />
+    <br />
+    <a href="https://coviconnect.onrender.com">View Demo</a>
+    ·
+    <a href="https://github.com/vicksonrodrigues/coviconnect/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/vicksonrodrigues/coviconnect/issues">Request Feature</a>
+  </p>
+</div>
 
-## Available Scripts
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-In the project directory, you can run:
+<!-- ABOUT THE PROJECT -->
 
-### `npm start`
+## About The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+CoviConnect is a Contact Management App with Charts and Maps built with ReactJS, TypeScript, TailwindCSS, React Router v6, and React Query. The app will allow users to add, edit, and delete contacts, with Redux managing contact data. Additionally, it will display interactive COVID-19 charts and a world map with markers for country-specific data.
 
-### `npm test`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Built With
 
-### `npm run build`
+[![HTML5][HTML5]][HTML-url]
+![CSS3][CSS3]
+[![React][React.js]][React-url]
+[![TypeScript][TypeScript]][TypeScript-url]
+[![React Router][ReactRouter]][ReactRouter-url]
+[![TailwindCSS][TailwindCSS]][Tailwind-url]
+[![React Query][React Query]][React Query-url]
+[![Redux][Redux]][Redux-url]
+[![Render][Render]][Render-url]
+[![nanoid][nanoid]][nanoid-url]
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- GETTING STARTED -->
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To get a local copy up and running follow these simple steps.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Before proceeding with the installation, ensure you have Node.js and npm installed on your system.
+You can download them from the official website: https://nodejs.org/
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Installation
 
-## Learn More
+1. Clone the repository to your local machine using the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+git clone https://github.com/vicksonrodrigues/coviconnect.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Install Dependencies:
+
+```sh
+npm install
+```
+
+
+### Usage
+
+
+1. Run the app in the development mode:
+   
+
+```sh
+npm start
+```
+
+2. Access the Application:\
+   Open your web browser and visit http://localhost:3000/ to access the project.
+
+3. Build the app for production
+```sh
+npm run build
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+Email - vickson.rodrigues@gmail.com
+
+LinkedIn - [https://www.linkedin.com/in/vicksonrodrigues/](https://www.linkedin.com/in/vicksonrodrigues/)
+
+Live Site - [https://coviconnect.onrender.com/contact](https://coviconnect.onrender.com/contact)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+I extend my thanks to the open-source community for providing a wealth of resources, libraries, and tools that greatly assisted us during the development process.
+
+- [OpenStreetMap](https://www.openstreetmap.org/#map=4/21.84/82.79)
+- [Leaflet](https://leafletjs.com/)
+- [Recharts](https://recharts.org/en-US/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+
+[HTML5]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
+[HTML-url]: https://html.spec.whatwg.org/dev/
+[CSS3]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[TypeScript]:https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]:https://www.typescriptlang.org/
+[ReactRouter]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
+[ReactRouter-url]: https://reactrouter.com/en/main
+[TailwindCSS]: https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white
+[Tailwind-url]: https://tailwindcss.com/
+[React Query]:https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white
+[React Query-url]: https://tanstack.com/query/v3/
+[Redux]: https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white
+[Redux-url]: https://redux.js.org/
+[nanoid]: https://img.shields.io/badge/NanoID-C9FD63?style=for-the-badge
+[nanoid-url]: https://github.com/ai/nanoid#readme
+[Render]:https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white
+[Render-url]:https://render.com/
